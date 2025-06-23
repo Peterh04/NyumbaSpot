@@ -1,0 +1,351 @@
+:root {
+  --primary-color-400: hsl(0, 0%, 96.47%);
+
+  --secondary-color-600: hsl(220, 10%, 6%);
+  --secondary-color-400: hsl(222.86, 9.33%, 14.71%);
+  --secondary-color-200: hsl(220, 10%, 18%);
+  --secondary-color-100: hsl(222, 8%, 39%);
+
+  --font-primary-600: hsl(0, 0%, 61.18%);
+  --font-primary-400: hsl(0, 0%, 55.69%);
+
+  --padding-primary: 25px;
+}
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  margin: 30px 30px 50px 30px;
+}
+
+#searchForm {
+  display: flex;
+  flex-direction: column;
+}
+
+#searchForm > label {
+  color: var(--font-primary-400);
+
+  font-size: 0.85rem;
+  font-weight: 10px;
+
+  padding-top: var(--padding-primary);
+}
+.input-container {
+  width: 100%;
+
+  position: relative;
+}
+/*searchbar*/
+.input-container > #location_search {
+  display: flex;
+
+  outline: none;
+  border: 1px solid var(--font-primary-400);
+  border-radius: 20px;
+
+  height: 55px;
+  width: 100%;
+
+  font-size: 1rem;
+  font-weight: 300;
+
+  padding: 20px 20px 20px 50px;
+}
+
+#location_search:focus {
+  border: 1.5px solid orange;
+
+  color: var(--secondary-color-400);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.input-container > .searchIcon {
+  position: absolute;
+  top: 35%;
+  left: 20px;
+  pointer-events: none;
+
+  font-size: 20px;
+}
+
+.input-container > .filterIcon {
+  position: absolute;
+  top: 35%;
+  right: 20px;
+
+  pointer-events: none;
+
+  font-size: 20px;
+}
+
+/* category display */
+.category {
+  margin-top: 30px;
+}
+.category-display {
+  display: flex;
+  overflow: auto;
+
+  gap: 20px;
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+
+  padding-top: 5px;
+  padding-bottom: 20px;
+  padding-left: 5px;
+}
+
+.category-display > .category-display-individual {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  background-color: #ffffff;
+
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.099);
+
+  min-height: 100px;
+  min-width: 120px;
+
+  padding: 10px;
+  text-align: center;
+  white-space: nowrap;
+  word-wrap: break-word;
+
+  gap: 8px;
+}
+
+.category-display-individual > svg {
+  height: 40px;
+
+  color: #999;
+}
+
+.icon-category-big {
+  font-size: 2rem;
+
+  color: #999;
+}
+
+.category-display-individual:hover {
+  cursor: pointer;
+}
+
+/* bestOffers display */
+
+.bestOffers {
+  padding-top: 20px;
+
+  margin-bottom: 50px;
+}
+
+.bestOffers > .offersHeading {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.offersHeading > button {
+  background: transparent;
+  border: none;
+
+  color: orange;
+
+  margin-right: 10px;
+}
+
+.offersHeading > button > i {
+  color: black;
+}
+
+.bestOffers > .bestOffers-display {
+  display: flex;
+  overflow: auto;
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+
+  gap: 20px;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.bestOffers-individual {
+  position: relative;
+
+  min-width: 240px;
+  min-height: 250px;
+
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+}
+
+.bestOffers-individual > img {
+  border-radius: 10px;
+
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.bestOffers-individual > .bestOffers-individual-summary {
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  border-radius: 5px;
+  padding: 10px;
+
+  position: absolute;
+  bottom: 20px;
+  left: 6px;
+
+  color: rgb(240, 238, 238);
+}
+
+/* navbar */
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  bottom: 15px;
+  z-index: 9999;
+
+  margin-top: 10px;
+
+  padding: 12px 20px;
+  gap: 25px;
+
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+
+  background: black;
+
+  border-radius: 20px;
+}
+
+.navbar > a {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
+  color: var(--font-primary-400);
+}
+
+.navbar .fa {
+  font-size: 1.3rem;
+
+  color: var(--font-primary-400);
+  transition: color 0.2s ease;
+}
+
+.navbar > a:hover {
+  color: orange;
+}
+
+.navbar .fa:hover {
+  color: orange;
+}
