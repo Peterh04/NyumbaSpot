@@ -1,0 +1,168 @@
+:root {
+  --primary-color-400: hsl(0, 0%, 96.47%);
+
+  --secondary-color-600: hsl(220, 10%, 6%);
+  --secondary-color-400: hsl(222.86, 9.33%, 14.71%);
+  --secondary-color-200: hsl(220, 10%, 18%);
+  --secondary-color-100: hsl(222, 8%, 39%);
+
+  --font-primary-600: hsl(0, 0%, 61.18%);
+  --font-primary-400: hsl(0, 0%, 55.69%);
+  --font-primary-200: #999;
+
+  --padding-primary: 25px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  z-index: 10000;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+
+  overflow-x: scroll;
+}
+
+.modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal > img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  display: block;
+}
+
+/* modal controls */
+.modalControls {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+
+  padding: 10px;
+
+  position: fixed;
+  z-index: 1500;
+  top: 0;
+}
+
+.modalBackBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  border-radius: 50%;
+
+  height: 35px;
+  width: 35px;
+
+  background: white;
+}
+
+.modalBackBtn > i {
+  font-size: 1.2rem;
+
+  color: var(--font-primary-200);
+}
+
+.modalControlsRight {
+  display: flex;
+  justify-content: space-between;
+
+  width: 80px;
+}
+
+.modalControlsRight > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  border-radius: 50%;
+
+  height: 35px;
+  width: 35px;
+
+  background-color: white;
+}
+
+.modalControlsRight > button > i {
+  font-size: 1.2rem;
+
+  /* color: rgb(76, 75, 75); */
+  color: var(--font-primary-200);
+}
+
+/* modal Description */
+
+.modal-description {
+  display: flex;
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100%;
+
+  background-color: white;
+
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+
+  padding: 30px;
+
+  position: absolute;
+  z-index: 1000;
+  top: 37%;
+}
+
+.modal-description > .property-summary-price-location {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+
+  margin-bottom: 50px;
+}
+
+.property-summary-price-location > .property_summary-location {
+  display: flex;
+  flex-direction: column;
+}
+
+.property_summary-location > p {
+  color: var(--font-primary-200);
+}
+
+.property_summary-location > p > i {
+  margin-right: 10px;
+}
+
+.property-summary-price-location > .property_summary_price {
+  display: flex;
+  flex-direction: column;
+}
+
+.property_summary_price > p {
+  color: var(--font-primary-200);
+}
+
+.property-description-details {
+  max-height: max-content;
+}
+
+.property-description-details > .property-description {
+  margin-top: 10px;
+  color: var(--font-primary-200);
+}

@@ -88,6 +88,10 @@ h6 {
   isolation: isolate;
 }
 
+button {
+  cursor: pointer;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -155,6 +159,8 @@ body {
   pointer-events: none;
 
   font-size: 20px;
+
+  cursor: pointer;
 }
 
 /* category display */
@@ -266,6 +272,8 @@ body {
   border-radius: 10px;
   border: none;
   background: transparent;
+
+  cursor: pointer;
 }
 
 .bestOffers-individual > img {
