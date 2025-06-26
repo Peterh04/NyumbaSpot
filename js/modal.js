@@ -1,8 +1,17 @@
 const bestOffersButton = document.querySelectorAll(".bestOffers-individual");
 const modal = document.querySelector(".modal");
 const modalBackBtn = document.querySelector(".modalBackBtn");
+const modalControls = document.querySelector(".modalControls");
 
-let isModalOpen = false;
+//Amenities Modal
+const amenitiesModal = document.querySelector(".property-amenities-modal");
+const showAmenittiesBtn = document.querySelector(".property_amenities_button");
+const closeAmenitiesBtn = document.querySelector(".amenitiesmodalBackBtn");
+
+const modalState = {
+  mainModalOpen: false,
+  amenitiesModalOpen: false,
+};
 
 bestOffersButton.forEach((button) => {
   button.addEventListener("click", () => {
@@ -20,16 +29,47 @@ bestOffersButton.forEach((button) => {
 
 const openModal = function openModal() {
   modal.classList.add("open");
-  isModalOpen = true;
-  console.log(`modal is open ?`, isModalOpen);
+  modalState.mainModalOpen = true;
+  console.log(`modal is open ?`, modalState);
 };
 
 const closeModal = function closeModal() {
   modal.classList.remove("open");
-  isModalOpen = false;
-  console.log(`modal is open ?`, isModalOpen);
+  modalState.mainModalOpen = false;
+  console.log(`modal is open ?`, modalState);
 };
 
 modalBackBtn.addEventListener("click", () => {
   closeModal();
 });
+
+//property amenities modal
+const openAmenitiesModal = function openModal() {
+  amenitiesModal.classList.add("open");
+  modalControls.classList.add("hidden");
+};
+
+const closeAmenitiesModal = function closeModal() {
+  amenitiesModal.classList.remove("open");
+  modalControls.classList.remove("hidden");
+};
+
+showAmenittiesBtn.addEventListener("click", () => {
+  openAmenitiesModal();
+  modalState.amenitiesModalOpen = true;
+  console.log(`modal is open ?`, modalState);
+});
+
+closeAmenitiesBtn.addEventListener("click", () => {
+  closeAmenitiesModal();
+  modalState.amenitiesModalOpen = false;
+  console.log(`modal is open ?`, modalState);
+});
+
+
+
+//Buttton eventListteners
+
+const setEventListeners = function setEventListeners(button){
+  
+}
