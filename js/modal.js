@@ -5,71 +5,110 @@ const modalControls = document.querySelector(".modalControls");
 
 //Amenities Modal
 const amenitiesModal = document.querySelector(".property-amenities-modal");
-const showAmenittiesBtn = document.querySelector(".property_amenities_button");
+const showAmenitiesBtn = document.querySelector(".property_amenities_button");
 const closeAmenitiesBtn = document.querySelector(".amenitiesmodalBackBtn");
+
+//comment modal
+const reviewBtn = document.querySelector(".reviewBtn");
+const commentsModal = document.querySelector(".comments-modal");
+const comentsModalBackBtn = document.querySelector(".comment-modal-back");
 
 const modalState = {
   mainModalOpen: false,
   amenitiesModalOpen: false,
+  commentsModalOpen: false,
 };
 
 bestOffersButton.forEach((button) => {
   button.addEventListener("click", () => {
-    openModal();
-    document.querySelector(".modal-img").src = button.dataset["image"];
-    document.querySelector(".property_rent").textContent =
-      button.dataset["price"];
-    document.querySelector(".property_location").textContent =
-      button.dataset["location"];
-    console.log(button.dataset["image"]);
+    openMainModal();
+    setMainModalContent(button);
   });
 });
 
-//modalopen and close functions
-
-const openModal = function openModal() {
-  modal.classList.add("open");
-  modalState.mainModalOpen = true;
-  console.log(`modal is open ?`, modalState);
+//Sets the main modal contentt
+const setMainModalContent = function setMainModalContent(button) {
+  document.querySelector(".modal-img").src = button.dataset["image"];
+  document.querySelector(".property_rent").textContent =
+    button.dataset["price"];
+  document.querySelector(".property_location").textContent =
+    button.dataset["location"];
 };
 
-const closeModal = function closeModal() {
-  modal.classList.remove("open");
+//modalopen and close functions
+const openMainModal = function openMainModal() {
+  showElement(modal);
+  modalState.mainModalOpen = true;
+};
+
+const closeMainModal = function closeMainModal() {
+  hideElement(modal);
   modalState.mainModalOpen = false;
-  console.log(`modal is open ?`, modalState);
 };
 
 modalBackBtn.addEventListener("click", () => {
-  closeModal();
+  closeMainModal();
 });
 
+//sync modal controls with whattever modal is opem
+const syncUIWithState = function syncUIWithState() {
+  modalState.amenitiesModalOpen === true ||
+  modalState.commentsModalOpen === true
+    ? modalControls.classList.add("hidden")
+    : modalControls.classList.remove("hidden");
+};
 //property amenities modal
-const openAmenitiesModal = function openModal() {
-  amenitiesModal.classList.add("open");
-  modalControls.classList.add("hidden");
+const openAmenitiesModal = function openAmenitiesMainModal() {
+  showElement(amenitiesModal);
+  modalState.amenitiesModalOpen = true;
+  syncUIWithState();
 };
 
-const closeAmenitiesModal = function closeModal() {
-  amenitiesModal.classList.remove("open");
-  modalControls.classList.remove("hidden");
+const closeAmenitiesModal = function closeAmenitiesMainModal() {
+  hideElement(amenitiesModal);
+  modalState.amenitiesModalOpen = false;
+  syncUIWithState();
 };
 
-showAmenittiesBtn.addEventListener("click", () => {
+showAmenitiesBtn.addEventListener("click", () => {
   openAmenitiesModal();
   modalState.amenitiesModalOpen = true;
-  console.log(`modal is open ?`, modalState);
 });
 
 closeAmenitiesBtn.addEventListener("click", () => {
   closeAmenitiesModal();
   modalState.amenitiesModalOpen = false;
-  console.log(`modal is open ?`, modalState);
 });
 
+////comment modal
+const openCommentModal = function openCommentModal() {
+  showElement(commentsModal);
+  modalState.commentsModalOpen = true;
+  syncUIWithState();
+};
 
+const closeCommentModal = function closeCommentModal() {
+  hideElement(commentsModal);
+  modalState.commentsModalOpen = false;
+  syncUIWithState();
+};
+
+reviewBtn.addEventListener("click", () => {
+  openCommentModal();
+});
+
+comentsModalBackBtn.addEventListener("click", () => {
+  closeCommentModal();
+});
 
 //Buttton eventListteners
 
-const setEventListeners = function setEventListeners(button){
-  
-}
+//show an Element
+const showElement = function showElement(element) {
+  element.classList.add("open");
+};
+
+//hide an element
+const hideElement = function hideElement(element) {
+  element.classList.remove("open");
+};

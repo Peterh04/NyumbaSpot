@@ -117,7 +117,7 @@
   flex-direction: column;
 
   width: 100vw;
-  height: 100%;
+  height: auto;
 
   background-color: white;
 
@@ -129,6 +129,8 @@
   position: absolute;
   z-index: 1000;
   top: 37%;
+
+  overflow-y: auto;
 }
 
 .modal-description > .property-summary-price-location {
@@ -217,7 +219,7 @@
   margin-left: 5px;
 }
 
-.property_amenities_button {
+.modalBtn {
   margin-top: 50px;
 
   border: none;
@@ -227,7 +229,7 @@
   font-weight: 500;
 }
 
-.property_amenities_button:hover {
+.modalBtn:hover {
   background: orange;
   color: white;
 }
@@ -333,6 +335,7 @@
   flex-direction: column;
 
   margin-top: 50px;
+
   width: 100%;
 }
 
@@ -345,4 +348,213 @@
 .property-location-map > iframe {
   margin-top: 10px;
   border-radius: 20px;
+}
+
+/* 
+Property reviews ssecction */
+
+.property-reviews {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.property-reviews-display {
+  display: flex;
+
+  margin-top: 20px;
+  margin-bottom: 50px;
+
+  width: 100%;
+
+  overflow: auto;
+
+  gap: 20px;
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.property-reviews-display > .property-review-card {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 300px;
+  min-height: 100px;
+
+  border-radius: 10px;
+
+  padding: 20px;
+
+  background-color: #ffffff;
+
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.099);
+}
+
+.property-review-card > .rating-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+}
+
+.rating-div > i {
+  font-size: 2rem;
+
+  color: orange;
+}
+
+.rating-div > .rating-stars {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  width: 110px;
+}
+
+.rating-stars > i {
+  color: orange;
+
+  font-size: 1rem;
+}
+
+.user-rating-comment {
+  display: flex;
+  width: 100%;
+
+  /* margin-top: 10px; */
+  padding: 10px;
+}
+
+.user_rating-details {
+  display: flex;
+  align-items: center;
+
+  padding-left: 10px;
+  margin-top: 20px;
+}
+
+.user_rating-details > .user_rating_img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50px;
+  height: 40px;
+  width: 40px;
+}
+
+.user_rating_img > .user_img {
+  display: flex;
+
+  border-radius: 50px;
+  height: 40px;
+  width: 40px;
+
+  object-fit: cover;
+}
+
+.user_rating-details > .user_details {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 1;
+
+  margin-left: 10px;
+}
+
+.user_details h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.user_details p {
+  margin: 5px 0 0 0;
+  font-size: 0.85rem;
+  color: gray;
+}
+
+/* comments Modal */
+.comments-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  z-index: 12000;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+
+  padding: 30px;
+
+  position: fixed;
+
+  overflow-x: scroll;
+}
+.comments-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.comments-modal > .comment-modal-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  border-radius: 50%;
+
+  height: 35px;
+  width: 35px;
+
+  position: fixed;
+  top: 20px;
+  left: 20px;
+}
+
+.comment-modal-back > i {
+  color: var(--font-primary-200);
+}
+
+.comment-modal-back:hover {
+  background: orange;
+}
+
+.comment-modal-back > i:hover {
+  color: white;
+}
+
+.comments-modal > .comment-modal-details {
+  margin-top: 50px;
+}
+
+.comment-modal-details > .user_comments_display {
+  display: flex;
+  flex-direction: column;
+}
+
+.user_comments_display > .user_review_comment {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 10px;
+}
+
+.commentBtn {
+  position: fixed;
+
+  width: 80%;
+  bottom: 10px;
 }
